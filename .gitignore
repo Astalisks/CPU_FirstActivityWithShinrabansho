@@ -1,0 +1,42 @@
+# ビルド出力 #
+target/
+project/target/
+project/project/
+
+# メタ情報 #
+.metals/
+.bsp/
+.cache/
+
+# ログファイル #
+*.log
+*.tlog
+
+# IntelliJ IDEA #
+.idea/
+*.iml
+
+# Eclipse #
+.bin/
+.classpath
+.project
+.settings/
+
+# VSCode #
+.vscode/
+
+# sbt native packages #
+lib_managed/
+src_managed/
+
+# パッケージング #
+dist/
+out/
+
+# クラスファイル #
+*.class
+
+# その他 #
+*.tmp
+*.cache
+.DS_Store # macOSで生成されるファイル
