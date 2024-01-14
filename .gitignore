@@ -1,3 +1,8 @@
+# 個人の設定ファイル
+.bloop/
+project
+
+
 # ビルド出力 #
 target/
 project/target/
