@@ -6,7 +6,7 @@ import chisel3.iotesters._
 import org.scalatest.flatspec.AnyFlatSpec
 
 class TopTest extends AnyFlatSpec with ChiselScalatestTester {
-    it must "runs Top" in { test(new Adder).withAnnotations(Seq(VerilatorBackendAnnotation, WriteFstAnnotation)) { c =>
+      it must "runs Top" in { test(new Adder).withAnnotations(Seq(VerilatorBackendAnnotation, WriteFstAnnotation)) { c =>
         c.io.a.poke(3.U)
         c.io.b.poke(5.U)
         c.clock.step(1)
@@ -17,5 +17,5 @@ class TopTest extends AnyFlatSpec with ChiselScalatestTester {
         c.clock.step(1)
         c.io.out.expect(4.U)
         // println("Result is: " + c.io.out.peek().toString)
-    } }
+      } }
 }
