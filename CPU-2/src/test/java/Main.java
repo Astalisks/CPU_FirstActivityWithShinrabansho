@@ -1,0 +1,12 @@
+import javax.swing.SwingUtilities;
+
+public class Main {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Calculator::new);
+        // SwingUtilities.invokeLater(new Runnable() {
+        //     public void run() {
+        //         new Calculator();
+        //     }
+        // });
+    }
+}
