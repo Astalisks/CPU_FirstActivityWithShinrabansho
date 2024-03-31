@@ -4,11 +4,6 @@ import chisel3._
 import chisel3.util._
 
 class Core extends Module {
-  val io = IO(new Bundle {
-    val a        = Input(UInt(8.W))
-    val b        = Input(UInt(8.W))
-    val out      = Output(UInt(8.W))
-  })
 
   val mem = Mem(1024 * 6, UInt(8.W))
   val pc = RegInit(0.U(32.W))
