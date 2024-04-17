@@ -1,7 +1,6 @@
 package core
 
 import chisel3._
-// ↓新たに追加
 import chisel3.util._
 
 class Alu extends Module {
