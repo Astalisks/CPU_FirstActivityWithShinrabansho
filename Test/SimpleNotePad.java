@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
+
 public class SimpleNotePad extends JFrame {
     private JTextArea textArea;
     private JMenuBar menuBar;
