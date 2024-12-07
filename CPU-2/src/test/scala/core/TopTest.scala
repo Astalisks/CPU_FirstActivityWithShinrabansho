@@ -15,3 +15,4 @@ class TopTest extends AnyFlatSpec with ChiselScalatestTester {
     }
   }
 }
+

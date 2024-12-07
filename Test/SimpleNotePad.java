@@ -85,3 +85,4 @@ public class SimpleNotePad extends JFrame {
         });
     }
 }
+

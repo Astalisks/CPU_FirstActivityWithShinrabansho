@@ -34,3 +34,4 @@ lazy val root = (project in file("."))
     // ハードウェア設計を補助するChisel用コンパイラプラグインを追加
     addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.5.4" cross CrossVersion.full)
   )
+

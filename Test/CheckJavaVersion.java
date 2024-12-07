@@ -4,3 +4,4 @@ public class CheckJavaVersion {
         System.out.println("Java version: " + System.getProperty("java.version"));
     }
 }
+
