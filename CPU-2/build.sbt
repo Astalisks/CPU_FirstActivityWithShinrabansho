@@ -1,5 +1,9 @@
 // ビルド全体で使用するScalaバージョンを定義
-ThisBuild / scalaVersion := "2.13.8"
+ThisBuild / scalaVersion := "2.13.12"
+ThisBuild / dependencyOverrides ++= Seq(
+  "org.scala-lang" % "scala-library" % (ThisBuild / scalaVersion).value,
+  "org.scala-lang" % "scala-reflect" % (ThisBuild / scalaVersion).value
+)
 
 // プロジェクトのバージョンを設定
 ThisBuild / version := "0.1.0"
@@ -15,9 +19,9 @@ lazy val root = (project in file("."))
     
     // Chiselに関連するライブラリ依存関係を追加します
     libraryDependencies ++= Seq(
-      "edu.berkeley.cs" %% "chisel3" % "3.5.4", // ハードウェア構築言語Chisel3
-      "edu.berkeley.cs" %% "chisel-iotesters" % "2.5.6", // Chisel用のI/Oテスター
-      "edu.berkeley.cs" %% "chiseltest" % "0.5.4" % "test" // ユニットテスト用のChiselテストフレームワーク
+      "edu.berkeley.cs" %% "chisel3" % "3.6.1", // ハードウェア構築言語Chisel3
+      // "edu.berkeley.cs" %% "chisel-iotesters" % "2.5.6", // Chisel用のI/Oテスター
+      "edu.berkeley.cs" %% "chiseltest" % "0.6.1" % "test" // ユニットテスト用のChiselテストフレームワーク
     ),
     
     // 機能を有効にし、非推奨やその他の問題をチェックするためのScalaコンパイラオプションを設定
@@ -32,5 +36,5 @@ lazy val root = (project in file("."))
     ),
     
     // ハードウェア設計を補助するChisel用コンパイラプラグインを追加
-    addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.5.4" cross CrossVersion.full)
+    addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.6.1" cross CrossVersion.full)
   )
