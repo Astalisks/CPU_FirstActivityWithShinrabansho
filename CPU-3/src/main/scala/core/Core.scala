@@ -52,18 +52,7 @@ class Core extends Module {
     (opcode === 2.U(5.W) && opcode_sub === 1.U(3.W)) -> (1.U(8.W)), // addi
     (opcode === 2.U(5.W) && opcode_sub === 2.U(3.W)) -> (2.U(8.W)), // subi
 
-    (opcode === 3.U(5.W) && opcode_sub === 0.U(3.W)) -> (2.U(8.W)), // beq
-    (opcode === 3.U(5.W) && opcode_sub === 1.U(3.W)) -> (2.U(8.W)), // bne
-    (opcode === 3.U(5.W) && opcode_sub === 2.U(3.W)) -> (2.U(8.W)), // blt
-    (opcode === 3.U(5.W) && opcode_sub === 3.U(3.W)) -> (2.U(8.W)), // ble
-    (opcode === 3.U(5.W) && opcode_sub === 4.U(3.W)) -> (1.U(8.W)), // jal
-
-    (opcode === 4.U(5.W) && opcode_sub === 0.U(3.W)) -> (1.U(8.W)), // lw
-
-    (opcode === 5.U(5.W) && opcode_sub === 0.U(3.W)) -> (1.U(8.W)), // sw
-
-    (opcode === 6.U(5.W) && opcode_sub === 0.U(3.W)) -> (1.U(8.W)), // in
-    (opcode === 6.U(5.W) && opcode_sub === 1.U(3.W)) -> (1.U(8.W)), // out
+    // opcode === 3.U ~ 6.U は次回以降使用する
 
     (opcode === 7.U(5.W) && opcode_sub === 0.U(3.W)) -> (3.U(8.W)), // and
     (opcode === 7.U(5.W) && opcode_sub === 1.U(3.W)) -> (4.U(8.W)), // or
@@ -84,24 +73,14 @@ class Core extends Module {
   alu.io.command := command
   alu.io.a       := MuxCase(regfile(rs1), Seq(
     (opcode === 2.U(5.W)) -> (regfile(rs1)),                            // addi, subi
-    (opcode === 3.U(5.W) && opcode_sub === 4.U(3.W)) -> (regfile(rs1)), // jal
-    (opcode === 4.U(5.W)) -> (regfile(rs1)),                            // lw
-    (opcode === 5.U(5.W)) -> (regfile(rs1)),                            // sw
-    (opcode === 6.U(5.W) && opcode_sub === 0.U(3.W)) -> (regfile(rs1)), // in
-    (opcode === 6.U(5.W) && opcode_sub === 1.U(3.W)) -> (regfile(rs1)), // out
+    // opcode === 3.U ~ 6.U は次回以降使用する
+    // opcode === 7.U(5.W)はrs1を使用しない
     (opcode === 8.U(5.W)) -> (regfile(rs1)),                            // andi, ori, xori, srli, srai, slli
   ))
   alu.io.b       := MuxCase(0.U(32.W), Seq(
     (opcode === 1.U(5.W)) -> (regfile(rs2)),                              // add, sub
     (opcode === 2.U(5.W)) -> (imm),                                       // addi, subi
-    (opcode === 3.U(5.W) && opcode_sub === 0.U(3.W)) -> (regfile(rs2)),   // beq
-    (opcode === 3.U(5.W) && opcode_sub === 1.U(3.W)) -> (regfile(rs2)),   // bne
-    (opcode === 3.U(5.W) && opcode_sub === 2.U(3.W)) -> (regfile(rs2)),   // blt
-    (opcode === 3.U(5.W) && opcode_sub === 3.U(3.W)) -> (regfile(rs2)),   // ble
-    (opcode === 3.U(5.W) && opcode_sub === 4.U(3.W)) -> (imm),            // jal
-    (opcode === 4.U(5.W)) -> (imm),                                       // lw
-    (opcode === 5.U(5.W)) -> (imm),                                       // sw
-    (opcode === 6.U(5.W)) -> (imm),                                       // in, out
+    // opcode === 3.U ~ 6.U は次回以降使用する
     (opcode === 7.U(5.W)) -> (regfile(rs2)),                              // and, or, xor, srl, sra, sll
     (opcode === 8.U(5.W)) -> (imm),                                       // andi, ori, xori, srli, srai, slli
   ))
