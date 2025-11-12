@@ -7,12 +7,11 @@ import org.scalatest.flatspec.AnyFlatSpec
 class TopTest extends AnyFlatSpec with ChiselScalatestTester {
   "Core" should "execute instructions correctly" in {
     test(new Core).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
-      // クロックを進める
-      dut.clock.step(4)
+      // クロックをn命令ぶんだけ進める
+      dut.clock.step(7)
 
       // 結果の検証
-      dut.io.out.expect(8900.U)
+      dut.io.out.expect(1.U)
     }
   }
 }
-

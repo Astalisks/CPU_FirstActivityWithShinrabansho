@@ -12,7 +12,7 @@ class Core extends Module {
 
   // メモリの定義と初期化
   val mem = Mem(1024 * 6, UInt(8.W))
-  loadMemoryFromFile(mem, "src/main/resources/02_sub-subi.hex")
+  loadMemoryFromFile(mem, "src/main/resources/03_and-andi.hex")
 
   val pc = RegInit(0.U(32.W))
 
@@ -104,9 +104,8 @@ class Core extends Module {
   printf(p"-------------------------------\n\n")
 
   // テスト用の出力
-  io.out := regfile(3)
+  io.out := regfile(6)
 
   // プログラムカウンタの更新
   pc := pc + 6.U
 }
-
