@@ -12,7 +12,7 @@ class Core extends Module {
 
   // メモリの定義と初期化
   val mem = Mem(1024 * 6, UInt(8.W))
-  loadMemoryFromFile(mem, "src/main/resources/bootrom1_tashizann.hex")
+  loadMemoryFromFile(mem, "src/main/resources/02_sub-subi.hex")
 
   val pc = RegInit(0.U(32.W))
 
@@ -109,8 +109,23 @@ class Core extends Module {
   // 書き戻し
   regfile(rd) := alu.io.out
 
+  // デバッグ用
+  printf(p"------pc    : 0x${Hexadecimal(pc)} ------\n")
+  printf(p"instr       : 0x${Hexadecimal(instr)}\n")
+  printf(p"opcode      : 0x${Hexadecimal(opcode)}\n")
+  printf(p"opcode_sub  : 0x${Hexadecimal(opcode_sub)}\n")
+  printf(p"rs1         : 0x${Hexadecimal(rs1)}\n")
+  printf(p"regfile(rs1): 0x${Hexadecimal(regfile(rs1))}\n")
+  printf(p"regfile(rs2): 0x${Hexadecimal(regfile(rs2))}\n")
+  printf(p"imm         : 0x${Hexadecimal(imm)}\n")
+  printf(p"command     : 0x${Hexadecimal(command)}\n")
+  printf(p"alu.io.a    : 0x${Hexadecimal(alu.io.a)}\n")
+  printf(p"alu.io.b    : 0x${Hexadecimal(alu.io.b)}\n")
+  printf(p"alu.io.out  : 0x${Hexadecimal(alu.io.out)}\n")
+  printf(p"-------------------------------\n\n")
+
   // テスト用の出力
-  io.out := regfile(2)
+  io.out := regfile(3)
 
   // プログラムカウンタの更新
   pc := pc + 6.U
