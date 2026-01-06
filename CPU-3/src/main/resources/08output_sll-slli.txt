@@ -1,0 +1,124 @@
+------pc    : 0x00000000 ------
+instr       : 0x0000000f0022
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x00
+rs1         : 0x18
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0x0000000f
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0x0000000f
+alu.io.out  : 0x0000000f
+-------------------------------
+
+------pc    : 0x00000006 ------
+instr       : 0xfffffff02122
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x01
+rs1         : 0x01
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0xfffffff0
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0xfffffff0
+alu.io.out  : 0xfffffff0
+-------------------------------
+
+------pc    : 0x0000000c ------
+instr       : 0x000000024222
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x02
+rs1         : 0x12
+regfile(rs1): 0x00000000
+regfile(rs2): 0x0000000f
+imm         : 0x00000002
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0x00000002
+alu.io.out  : 0x00000002
+-------------------------------
+
+------pc    : 0x00000012 ------
+instr       : 0x0000000103a8
+opcode      : 0x08
+opcode_sub  : 0x5
+rd          : 0x03
+rs1         : 0x08
+regfile(rs1): 0x00000000
+regfile(rs2): 0x0000000f
+imm         : 0x00000001
+command     : 0x08
+alu.io.a    : 0x0000000f
+alu.io.b    : 0x00000001
+alu.io.out  : 0x0000001e
+-------------------------------
+
+------pc    : 0x00000018 ------
+instr       : 0x0000000804a7
+opcode      : 0x07
+opcode_sub  : 0x5
+rd          : 0x04
+rs1         : 0x00
+regfile(rs1): 0x0000000f
+regfile(rs2): 0x00000002
+imm         : 0x00000008
+command     : 0x08
+alu.io.a    : 0x0000000f
+alu.io.b    : 0x00000002
+alu.io.out  : 0x0000003c
+-------------------------------
+
+------pc    : 0x0000001e ------
+instr       : 0x0000000125a8
+opcode      : 0x08
+opcode_sub  : 0x5
+rd          : 0x05
+rs1         : 0x09
+regfile(rs1): 0x00000000
+regfile(rs2): 0x0000000f
+imm         : 0x00000001
+command     : 0x08
+alu.io.a    : 0xfffffff0
+alu.io.b    : 0x00000001
+alu.io.out  : 0xffffffe0
+-------------------------------
+
+------pc    : 0x00000024 ------
+instr       : 0x0000000826a7
+opcode      : 0x07
+opcode_sub  : 0x5
+rd          : 0x06
+rs1         : 0x01
+regfile(rs1): 0xfffffff0
+regfile(rs2): 0x00000002
+imm         : 0x00000008
+command     : 0x08
+alu.io.a    : 0xfffffff0
+alu.io.b    : 0x00000002
+alu.io.out  : 0xffffffc0
+-------------------------------
+
+（scalaの仕様上、4294967232を直接書くと数が大きすぎてコンパイルエラーになるようです、
+[error]       dut.io.out.expect(4294967232.U)
+[error]                         ^                                                                                                                                                                                                                                                                                                                                   
+[error] one error found                                                                                                                                                                                                                                                                                                                                             
+[error] (Test / compileIncremental) Compilation failed
+
+その際は期待する出力を適当な値にして、値が異なったままテスト終了させることで正常な値を確認できます）
+[info] TopTest:
+[info] Core
+[info] - should execute instructions correctly *** FAILED ***                                                                                                                                                                                                                                                                                                       
+[info]   io_out=4294967232 (0xffffffc0) did not equal expected=12345 (0x3039) (lines in TopTest.scala: 14, 9) (TopTest.scala:14)                                                                                                                                                                                                                                        
+[info] Run completed in 2 seconds, 160 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0                                                                                                                                                                                                                                                                                                                               
+[info] Tests: succeeded 0, failed 1, canceled 0, ignored 0, pending 0                                                                                                                                                                                                                                                                                               
+[info] *** 1 TEST FAILED ***                                                                                                                                                                                                                                                                                                                                        
+[error] Failed tests:                                                                                                                                                                                                                                                                                                                                               
+[error]         core.TopTest                                                                                                                                                                                                                                                                                                                                        
+[error] (Test / test) sbt.TestsFailedException: Tests unsuccessful

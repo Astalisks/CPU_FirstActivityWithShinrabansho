@@ -11,7 +11,7 @@ class TopTest extends AnyFlatSpec with ChiselScalatestTester {
       dut.clock.step(7)
 
       // 結果の検証
-      dut.io.out.expect(1.U)
+      dut.io.out.expect(12345.U)
     }
   }
 }

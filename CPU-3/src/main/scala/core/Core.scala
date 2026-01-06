@@ -12,7 +12,7 @@ class Core extends Module {
 
   // メモリの定義と初期化
   val mem = Mem(1024 * 6, UInt(8.W))
-  loadMemoryFromFile(mem, "src/main/resources/03_and-andi.hex")
+  loadMemoryFromFile(mem, "src/main/resources/08_sll-slli.hex")
 
   val pc = RegInit(0.U(32.W))
 
@@ -21,6 +21,7 @@ class Core extends Module {
   val opcode_sub = Wire(UInt(3.W))
   val rd         = Wire(UInt(5.W))
   val rs1        = Wire(UInt(5.W))
+  val rs1_i      = Wire(UInt(5.W))
   val rs2        = Wire(UInt(5.W))
   val imm        = Wire(UInt(32.W))
 
@@ -34,6 +35,7 @@ class Core extends Module {
   opcode_sub := instr( 7,  5)
   rd         := instr(12,  8)
   rs1        := instr(17, 13)
+  rs1_i      := Cat(0.U(2.W), instr(15, 13))
   rs2        := instr(22, 18)
   imm        := instr(47, 16)
 
@@ -72,10 +74,11 @@ class Core extends Module {
   // Execute部（計算実行）
   alu.io.command := command
   alu.io.a       := MuxCase(regfile(rs1), Seq(
+    // opcode === 1.U(5.W) はrs1を使用しない
     (opcode === 2.U(5.W)) -> (regfile(rs1)),                            // addi, subi
     // opcode === 3.U ~ 6.U は次回以降使用する
     // opcode === 7.U(5.W)はrs1を使用しない
-    (opcode === 8.U(5.W)) -> (regfile(rs1)),                            // andi, ori, xori, srli, srai, slli
+    (opcode === 8.U(5.W)) -> regfile(rs1_i),                             // andi, ori, xori, srli, srai, slli
   ))
   alu.io.b       := MuxCase(0.U(32.W), Seq(
     (opcode === 1.U(5.W)) -> (regfile(rs2)),                              // add, sub
@@ -93,6 +96,7 @@ class Core extends Module {
   printf(p"instr       : 0x${Hexadecimal(instr)}\n")
   printf(p"opcode      : 0x${Hexadecimal(opcode)}\n")
   printf(p"opcode_sub  : 0x${Hexadecimal(opcode_sub)}\n")
+  printf(p"rd          : 0x${Hexadecimal(rd)}\n")
   printf(p"rs1         : 0x${Hexadecimal(rs1)}\n")
   printf(p"regfile(rs1): 0x${Hexadecimal(regfile(rs1))}\n")
   printf(p"regfile(rs2): 0x${Hexadecimal(regfile(rs2))}\n")

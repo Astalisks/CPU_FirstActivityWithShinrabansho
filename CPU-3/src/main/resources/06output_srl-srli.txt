@@ -1,0 +1,106 @@
+------pc    : 0x00000000 ------
+instr       : 0x0000000f0022
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x00
+rs1         : 0x18
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0x0000000f
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0x0000000f
+alu.io.out  : 0x0000000f
+-------------------------------
+
+------pc    : 0x00000006 ------
+instr       : 0xfffffff02122
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x01
+rs1         : 0x01
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0xfffffff0
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0xfffffff0
+alu.io.out  : 0xfffffff0
+-------------------------------
+
+------pc    : 0x0000000c ------
+instr       : 0x000000024222
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x02
+rs1         : 0x12
+regfile(rs1): 0x00000000
+regfile(rs2): 0x0000000f
+imm         : 0x00000002
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0x00000002
+alu.io.out  : 0x00000002
+-------------------------------
+
+------pc    : 0x00000012 ------
+instr       : 0x000000010368
+opcode      : 0x08
+opcode_sub  : 0x3
+rd          : 0x03
+rs1         : 0x08
+regfile(rs1): 0x00000000
+regfile(rs2): 0x0000000f
+imm         : 0x00000001
+command     : 0x06
+alu.io.a    : 0x0000000f
+alu.io.b    : 0x00000001
+alu.io.out  : 0x00000007
+-------------------------------
+
+------pc    : 0x00000018 ------
+instr       : 0x000000080467
+opcode      : 0x07
+opcode_sub  : 0x3
+rd          : 0x04
+rs1         : 0x00
+regfile(rs1): 0x0000000f
+regfile(rs2): 0x00000002
+imm         : 0x00000008
+command     : 0x06
+alu.io.a    : 0x0000000f
+alu.io.b    : 0x00000002
+alu.io.out  : 0x00000003
+-------------------------------
+
+------pc    : 0x0000001e ------
+instr       : 0x000000012568
+opcode      : 0x08
+opcode_sub  : 0x3
+rd          : 0x05
+rs1         : 0x09
+regfile(rs1): 0x00000000
+regfile(rs2): 0x0000000f
+imm         : 0x00000001
+command     : 0x06
+alu.io.a    : 0xfffffff0
+alu.io.b    : 0x00000001
+alu.io.out  : 0x7ffffff8
+-------------------------------
+
+------pc    : 0x00000024 ------
+instr       : 0x000000082667
+opcode      : 0x07
+opcode_sub  : 0x3
+rd          : 0x06
+rs1         : 0x01
+regfile(rs1): 0xfffffff0
+regfile(rs2): 0x00000002
+imm         : 0x00000008
+command     : 0x06
+alu.io.a    : 0xfffffff0
+alu.io.b    : 0x00000002
+alu.io.out  : 0x3ffffffc
+-------------------------------
+
+（参考：0x40000000 = 2^30 = 1073741824 なので、0x3ffffffc = 1073741824 - 4 = 1073741820）

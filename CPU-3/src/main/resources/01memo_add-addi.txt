@@ -17,3 +17,15 @@
 ①00_00_00_03_00_22 → bootrom.hexには22,00,03,00,00,00の順番で入れる
 ②00_00_00_05_21_22 → bootrom.hexには22,21,05,00,00,00の順番で入れる
 ③00_00_00_04_02_21 → bootrom.hexには21,02,04,00,00,00の順番で入れる
+
+Core.scalaの以下を修正
+15行目
+    loadMemoryFromFile(mem, "src/main/resources/01_add-addi.hex")
+105行目
+    io.out := regfile(2)
+
+TopTest.scalaの以下を修正
+11行目
+      dut.clock.step(3)
+12行目
+      dut.io.out.expect(8.U)

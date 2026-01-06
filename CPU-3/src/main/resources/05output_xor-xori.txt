@@ -1,0 +1,59 @@
+------pc    : 0x00000000 ------
+instr       : 0x0000000f0022
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x00
+rs1         : 0x18
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0x0000000f
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0x0000000f
+alu.io.out  : 0x0000000f
+-------------------------------
+
+------pc    : 0x00000006 ------
+instr       : 0x0000000f2122
+opcode      : 0x02
+opcode_sub  : 0x1
+rd          : 0x01
+rs1         : 0x19
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0x0000000f
+command     : 0x01
+alu.io.a    : 0x00000000
+alu.io.b    : 0x0000000f
+alu.io.out  : 0x0000000f
+-------------------------------
+
+------pc    : 0x0000000c ------
+instr       : 0xfffffffc4248
+opcode      : 0x08
+opcode_sub  : 0x2
+rd          : 0x02
+rs1         : 0x02
+regfile(rs1): 0x00000000
+regfile(rs2): 0x00000000
+imm         : 0xfffffffc
+command     : 0x05
+alu.io.a    : 0x00000000
+alu.io.b    : 0xfffffffc
+alu.io.out  : 0xfffffffc
+-------------------------------
+
+------pc    : 0x00000012 ------
+instr       : 0x000000040347
+opcode      : 0x07
+opcode_sub  : 0x2
+rd          : 0x03
+rs1         : 0x00
+regfile(rs1): 0x0000000f
+regfile(rs2): 0x0000000f
+imm         : 0x00000004
+command     : 0x05
+alu.io.a    : 0x0000000f
+alu.io.b    : 0x0000000f
+alu.io.out  : 0x00000000
+-------------------------------

@@ -25,3 +25,15 @@
 ②00_00_03_e8_21_22 → bootrom.hexには22,21,e8,03,00,00の順番で入れる
 ③00_00_00_64_02_42 → bootrom.hexには42,02,64,00,00,00の順番で入れる
 ④00_00_00_04_43_41 → bootrom.hexには41,43,04,00,00,00の順番で入れる
+
+Core.scalaの以下を修正
+15行目
+    loadMemoryFromFile(mem, "src/main/resources/02_sub-subi.hex")
+105行目
+    io.out := regfile(3)
+
+TopTest.scalaの以下を修正
+11行目
+      dut.clock.step(4)
+12行目
+      dut.io.out.expect(8900.U)
